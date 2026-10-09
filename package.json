@@ -1,0 +1,77 @@
+{
+  "name": "nibble",
+  "version": "1.0.0",
+  "description": "A desktop pet for Claude Code: it floats over your desktop and shows what your sessions are doing",
+  "main": "main.js",
+  "private": true,
+  "license": "MIT",
+  "author": "Nibble contributors",
+  "scripts": {
+    "start": "electron .",
+    "prebuild": "node scripts/prepare-build.js",
+    "build": "electron-builder --win nsis --x64",
+    "build:dir": "node scripts/prepare-build.js && electron-builder --win dir --x64"
+  },
+  "devDependencies": {
+    "electron": "^44.7.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "io.github.nibble-pet.nibble",
+    "productName": "Nibble",
+    "copyright": "Copyright (c) 2026 Nibble contributors",
+    "asar": false,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "lib/**",
+      "ui/**",
+      "hook/**",
+      "cli/**",
+      "skill/**",
+      "pets/**",
+      "locales/**",
+      "LICENSE",
+      "THIRD-PARTY-NOTICES.md"
+    ],
+    "extraResources": [
+      {
+        "from": "build/node",
+        "to": "node"
+      }
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "include": "build/installer.nsh",
+      "artifactName": "Nibble-Setup-${version}.${ext}",
+      "shortcutName": "Nibble",
+      "createDesktopShortcut": false,
+      "deleteAppDataOnUninstall": false,
+      "runAfterFinish": true
+    },
+    "electronLanguages": [
+      "en-US",
+      "he",
+      "ar",
+      "fa"
+    ]
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}
