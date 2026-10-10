@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "id": "ember",
+  "name": "Ember",
+  "palette": {
+    "o": "#D97757",
+    "d": "#B5573A",
+    "c": "#F2A98C",
+    "k": "#2A1F1A",
+    "w": "#FFFFFF",
+    "f": "#8F4630",
+    "r": "#E8505B",
+    "b": "#7CC4F0"
+  },
+  "base": [
+    "................",
+    "....o......o....",
+    "...ooo....ooo...",
+    "...oooooooooo...",
+    "..oooooooooooo..",
+    ".oooooooooooooo.",
+    ".ooowkoooowkooo.",
+    ".oookkooookkooo.",
+    ".occoooooooocco.",
+    ".ooooookkoooooo.",
+    ".oooooooooooooo.",
+    "..oooooooooooo..",
+    "..dooooooooood..",
+    "...dddddddddd...",
+    "...ff......ff...",
+    "................"
+  ],
+  "frames": {
+    "blink": {
+      "6": ".oooooooooooooo.",
+      "7": ".oookkooookkooo."
+    },
+    "walk1": {
+      "14": "...ff..........."
+    },
+    "walk2": {
+      "14": "...........ff..."
+    },
+    "happy": {
+      "6": ".oookkooookkooo.",
+      "7": ".ookookookookoo.",
+      "10": ".oooooorroooooo."
+    },
+    "sad": {
+      "4": "..oooooooooooob.",
+      "5": ".oooooooooooooob",
+      "6": ".oooooooooooooo.",
+      "7": ".oookkooookkooo.",
+      "9": ".ooooookkoooooo.",
+      "10": ".oooookookooooo."
+    },
+    "alert": {
+      "5": ".oookkooookkooo.",
+      "6": ".ooowkoooowkooo."
+    },
+    "sleep": {
+      "6": ".oooooooooooooo.",
+      "7": ".oookkooookkooo.",
+      "9": ".oooooooooooooo."
+    }
+  }
+}

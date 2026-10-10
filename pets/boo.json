@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "id": "boo",
+  "name": "Boo",
+  "palette": {
+    "v": "#CDB8F5",
+    "u": "#A98EE0",
+    "k": "#2D2440",
+    "p": "#F7A8C8"
+  },
+  "base": [
+    "................",
+    ".....vvvvvv.....",
+    "...vvvvvvvvvv...",
+    "..vvvvvvvvvvvv..",
+    "..vvvvvvvvvvvv..",
+    ".vvvkkvvvvkkvvv.",
+    ".vvvkkvvvvkkvvv.",
+    ".vppvvvvvvvvppv.",
+    ".vvvvvvkkvvvvvv.",
+    ".vvvvvvvvvvvvvv.",
+    ".vvvvvvvvvvvvvv.",
+    ".vvvvvvvvvvvvvv.",
+    ".uvvvvvvvvvvvvu.",
+    ".uvvuuvvvvuuvvu.",
+    ".uu..uu..uu..uu.",
+    "................"
+  ],
+  "frames": {
+    "blink": {
+      "5": ".vvvvvvvvvvvvvv.",
+      "6": ".vvvkkvvvvkkvvv."
+    },
+    "walk1": {},
+    "walk2": {
+      "13": ".uvvvvuuuuvvvvu.",
+      "14": "...uu..uu..uu..."
+    },
+    "happy": {
+      "5": ".vvvkkvvvvkkvvv.",
+      "6": ".vvkvvkvvkvvkvv.",
+      "9": ".vvvvvvkkvvvvvv."
+    },
+    "sad": {
+      "5": ".vvvvvvvvvvvvvv.",
+      "6": ".vvvkkvvvvkkvvv.",
+      "9": ".vvvvvkvvkvvvvv."
+    },
+    "alert": {
+      "4": "..vvkkvvvvkkvv..",
+      "9": ".vvvvvvkkvvvvvv."
+    },
+    "sleep": {
+      "5": ".vvvvvvvvvvvvvv.",
+      "6": ".vvvkkvvvvkkvvv.",
+      "8": ".vvvvvvvvvvvvvv."
+    }
+  }
+}

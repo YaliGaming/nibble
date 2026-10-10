@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "id": "byte",
+  "name": "Byte",
+  "palette": {
+    "t": "#4FB3A6",
+    "s": "#3A8C82",
+    "y": "#FFD65A",
+    "k": "#17332F",
+    "c": "#9FF3E6",
+    "m": "#D8DEE0",
+    "r": "#FF6B6B"
+  },
+  "base": [
+    ".......yy.......",
+    ".......mm.......",
+    "...tttttttttt...",
+    "..tttttttttttt..",
+    "..tkkkkkkkkkkt..",
+    "..tkcckkkkcckt..",
+    "..tkcckkkkcckt..",
+    "..tkkkkkkkkkkt..",
+    "..tttttttttttt..",
+    "...ssssssssss...",
+    ".m.tttttttttt.m.",
+    ".m.ttttyytttt.m.",
+    "...tttttttttt...",
+    "...ssssssssss...",
+    "....mm....mm....",
+    "................"
+  ],
+  "frames": {
+    "blink": {
+      "5": "..tkkkkkkkkkkt..",
+      "6": "..tkcckkkkcckt.."
+    },
+    "walk1": {
+      "14": "...mm.....mm...."
+    },
+    "walk2": {
+      "0": "................",
+      "14": "....mm.....mm..."
+    },
+    "happy": {
+      "5": "..tkcckkkkcckt..",
+      "6": "..tckkckkckkct.."
+    },
+    "sad": {
+      "0": "................",
+      "5": "..tkkkkkkkkkkt..",
+      "6": "..tkrrkkkkrrkt..",
+      "11": ".m.ttttrrtttt.m."
+    },
+    "alert": {
+      "4": "..tkcckkkkcckt.."
+    },
+    "sleep": {
+      "0": "................",
+      "5": "..tkkkkkkkkkkt..",
+      "6": "..tksskkkksskt..",
+      "11": ".m.ttttsstttt.m."
+    }
+  }
+}

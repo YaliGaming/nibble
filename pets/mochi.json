@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "id": "mochi",
+  "name": "Mochi",
+  "palette": {
+    "w": "#F7F1E8",
+    "g": "#CDBFAE",
+    "e": "#F2A0A0",
+    "k": "#3A2E28",
+    "n": "#E8837A"
+  },
+  "base": [
+    "................",
+    "..ww........ww..",
+    "..wew......wew..",
+    "..wwwwwwwwwwww..",
+    ".wwwwwwwwwwwwww.",
+    ".wwwwwwwwwwwwww.",
+    ".wwwkkwwwwkkwww.",
+    ".wwwkkwwwwkkwww.",
+    ".weewwwnnwwweew.",
+    ".wwwwwkwwkwwwww.",
+    "..wwwwwkkwwwww..",
+    "..wwwwwwwwwwww..",
+    "..wwwwwwwwwwwwgg",
+    "..gwwwwwwwwwwg.g",
+    "..gg.gg..gg.gg..",
+    "................"
+  ],
+  "frames": {
+    "blink": {
+      "6": ".wwwwwwwwwwwwww.",
+      "7": ".wwwkkwwwwkkwww."
+    },
+    "walk1": {
+      "14": "..gg.....gg....."
+    },
+    "walk2": {
+      "12": "..wwwwwwwwwwww..",
+      "13": "..gwwwwwwwwwwggg",
+      "14": ".....gg.....gg.."
+    },
+    "happy": {
+      "6": ".wwwkkwwwwkkwww.",
+      "7": ".wwkwwkwwkwwkww."
+    },
+    "sad": {
+      "6": ".wwwwwwwwwwwwww.",
+      "7": ".wwwkkwwwwkkwww.",
+      "9": ".wwwwwwkkwwwwww.",
+      "10": "..wwwwkwwkwwww.."
+    },
+    "alert": {
+      "5": ".wwwkkwwwwkkwww."
+    },
+    "sleep": {
+      "6": ".wwwwwwwwwwwwww.",
+      "7": ".wwwkkwwwwkkwww.",
+      "9": ".wwwwwwwwwwwwww.",
+      "10": "..wwwwwwwwwwww.."
+    }
+  }
+}
