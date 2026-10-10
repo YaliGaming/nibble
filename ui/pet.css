@@ -1,0 +1,191 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#bubble-zone {
+  height: 62px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 6px 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#bubble {
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 6px 7px;
+  padding-inline: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  text-align: start;
+  animation: pop 0.18s ease-out;
+}
+#bubble[hidden] { display: none; }
+#bubble:hover { filter: brightness(1.08); }
+
+.bubble-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+#bubble-status { font-size: 12px; font-weight: 600; white-space: nowrap; }
+#bubble-sub {
+  font-size: 11.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+}
+#bubble-sub:empty { display: none; }
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(4px) scale(0.96); }
+}
+
+#hover-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#stage { position: relative; }
+#pet { display: block; pointer-events: none; will-change: transform; }
+
+#hit {
+  position: absolute;
+  cursor: grab;
+  touch-action: none;
+}
+#stage.dragging #hit { cursor: grabbing; }
+
+#shadow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
+#badge {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  border: 2px solid var(--card);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  animation: pop 0.2s ease-out;
+}
+#badge[hidden] { display: none; }
+#badge.s-needs_input { background: var(--needs); color: #2a1f08; }
+#badge.s-ready { background: var(--ready); }
+#badge.s-blocked { background: var(--blocked); }
+
+#controls-zone {
+  height: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2px;
+  box-sizing: border-box;
+}
+
+#controls {
+  display: inline-flex;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+  transform: translateY(-5px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease;
+}
+body.hover #controls,
+body.mini #controls {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+#controls button {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+#controls button:hover { background: var(--hover); }
+
+#count {
+  position: absolute;
+  top: 0;
+  inset-inline-end: -1px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 4px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: var(--needs);
+  color: #2a1f08;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 15px;
+  text-align: center;
+}
+#count[hidden] { display: none; }
+
+body.mini #stage { display: none; }
+body.mini #controls-zone { height: auto; padding: 0 0 8px; }
+
+#bubble { padding: 0; gap: 0; cursor: default; }
+#bubble-main {
+  flex: 1;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 6px 7px;
+  padding-inline: 10px 12px;
+  border: 0;
+  border-radius: 14px;
+  background: none;
+  cursor: pointer;
+  text-align: start;
+}
+#ask-buttons { flex: none; display: inline-flex; gap: 5px; padding-inline-end: 8px; }
+#ask-buttons[hidden] { display: none; }
+#ask-buttons button {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+#ask-buttons button:hover { filter: brightness(1.15); }
+#ask-allow { background: var(--ready); border-color: transparent; color: #0c2a14; }
+#ask-deny { background: var(--raised); color: var(--ink); }

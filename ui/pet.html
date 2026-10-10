@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+  <title>Nibble</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="pet.css">
+</head>
+<body>
+  <div id="bubble-zone">
+    <div id="bubble" data-hit hidden>
+      <button id="bubble-main" type="button">
+        <span class="dot"></span>
+        <span class="bubble-text">
+          <b id="bubble-status"></b>
+          <span id="bubble-sub" dir="auto"></span>
+        </span>
+      </button>
+      <span id="ask-buttons" hidden>
+        <button id="ask-allow" type="button">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>
+        </button>
+        <button id="ask-deny" type="button">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </span>
+    </div>
+  </div>
+
+  <div id="hover-area">
+    <div id="stage">
+      <canvas id="pet"></canvas>
+      <div id="shadow"></div>
+      <div id="hit" data-hit></div>
+      <div id="badge" hidden></div>
+    </div>
+    <div id="controls-zone">
+      <div id="controls" data-hit>
+        <button id="c-chat" type="button">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        </button>
+        <button id="c-activity" type="button">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          <span id="count" hidden></span>
+        </button>
+        <button id="c-more" type="button">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="sprites.js"></script>
+  <script src="pet.js"></script>
+</body>
+</html>

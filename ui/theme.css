@@ -1,0 +1,62 @@
+:root {
+  color-scheme: light dark;
+  --accent: #D97757;
+  --accent-ink: #ffffff;
+  --card: rgba(31, 30, 28, 0.96);
+  --raised: rgba(255, 255, 255, 0.06);
+  --hover: rgba(255, 255, 255, 0.09);
+  --line: rgba(255, 255, 255, 0.11);
+  --ink: #F4EFE8;
+  --muted: #A8A196;
+  --shadow: 0 6px 22px rgba(0, 0, 0, 0.36);
+
+  --running: #E8824F;
+  --needs: #F5B544;
+  --ready: #56C271;
+  --blocked: #EF5F5F;
+  --idle: #8F897F;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --card: rgba(255, 255, 255, 0.97);
+    --raised: rgba(0, 0, 0, 0.04);
+    --hover: rgba(0, 0, 0, 0.07);
+    --line: rgba(0, 0, 0, 0.11);
+    --ink: #26221D;
+    --muted: #7A736A;
+    --shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+  }
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  color: var(--ink);
+  font: 13px/1.35 "Segoe UI", system-ui, -apple-system, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button { font: inherit; color: inherit; }
+
+[dir="rtl"] [dir="auto"]:not(textarea):not(input) { text-align: right; }
+[dir="ltr"] [dir="auto"]:not(textarea):not(input) { text-align: left; }
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+  background: var(--idle);
+}
+.s-running .dot, .dot.s-running { background: var(--running); }
+.s-needs_input .dot, .dot.s-needs_input { background: var(--needs); }
+.s-ready .dot, .dot.s-ready { background: var(--ready); }
+.s-blocked .dot, .dot.s-blocked { background: var(--blocked); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
