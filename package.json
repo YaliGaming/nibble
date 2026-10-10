@@ -9,15 +9,15 @@
   "scripts": {
     "start": "electron .",
     "prebuild": "node scripts/prepare-build.js",
-    "build": "electron-builder --win nsis --x64",
-    "build:dir": "node scripts/prepare-build.js && electron-builder --win dir --x64"
+    "build": "electron-builder --win nsis --x64 --publish never",
+    "build:dir": "node scripts/prepare-build.js && electron-builder --win dir --x64 --publish never"
   },
   "devDependencies": {
     "electron": "^44.7.0",
     "electron-builder": "^26.15.3"
   },
   "build": {
-    "appId": "io.github.nibble-pet.nibble",
+    "appId": "io.github.yaligaming.nibble",
     "productName": "Nibble",
     "copyright": "Copyright (c) 2026 Nibble contributors",
     "asar": false,
