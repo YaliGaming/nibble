@@ -4,14 +4,14 @@ Thanks for wanting to help. Pets and translations are the easiest places to star
 
 ## Setting up
 
-You need Windows and [Node.js](https://nodejs.org/) 22 or later.
+You need Windows, [Rust](https://rustup.rs/) (stable) and the Visual Studio C++ build tools.
 
 ```bash
-npm install
+cargo build
 ```
 
 ```bash
-npm start
+cargo run -p nibble
 ```
 
 To try the app without touching your own Claude Code settings, set two environment variables before starting it: `NIBBLE_HOME` (where the pet keeps its data, normally `~/.nibble-pet`) and `CLAUDE_CONFIG_DIR` (where it looks for Claude Code's settings, normally `~/.claude`). Point both at empty folders.
@@ -50,17 +50,17 @@ Each language is one file in `locales/`, named by its language code (`fr.json`, 
 
 The language then appears in the settings by itself, and is picked automatically for people whose system is set to it. A string that is missing from a translation is shown in English, so a partial translation still works.
 
-For a right-to-left language, also add its Chromium locale code to `electronLanguages` in `package.json`, so the native right-click menu opens in the right direction in the installed app.
-
 Look at every screen in the new language before sending it: the panel, a session's page, and the settings.
 
 ## Changing the code
 
-- `hook/pet-hook.js` and `cli/pet.js` are copied into `~/.nibble-pet` and run on their own by Claude Code, so they cannot `require` anything from the app. Both must always exit 0 and print nothing unexpected: a hook that fails or chatters gets in the way of someone's work.
-- `lib/reducer.js` is the state machine. It is a pure function of a session's event log.
-- `lib/connect.js` edits the user's `settings.json`. It must only ever add, change or remove entries that point at Nibble's own two scripts.
+- `crates/hook` builds `nibble-hook`, which is copied into `~/.nibble-pet` and run on its own by Claude Code for every hook event and for `/pet`. It must always exit 0 and print nothing unexpected: a hook that fails or chatters gets in the way of someone's work.
+- `app/src/reducer.rs` is the state machine. It is a pure function of a session's event log.
+- `app/src/connect.rs` edits the user's `settings.json`. It must only ever add, change or remove entries that point at Nibble's own helper program.
+- `crates/core` holds what the app and the helper share: paths, the preferences file and the pipe they talk over.
+- `ui/` is the HTML, CSS and JavaScript of the pet and the panel. `app/src/bridge.js` connects it to the Rust side.
 - Text shown to people lives in `locales/`, never in the code.
-- No runtime dependencies. The app is small enough to read in an afternoon; please help keep it that way.
+- Keep the dependency list short. The app is small enough to read in an afternoon; please help keep it that way.
 
 ## Reporting a problem
 

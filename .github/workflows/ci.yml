@@ -10,11 +10,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build:dir
-        env:
-          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo clippy --workspace --release -- -D warnings
+      - run: cargo build --workspace --release

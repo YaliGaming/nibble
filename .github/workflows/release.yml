@@ -12,15 +12,17 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-        env:
-          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo install tauri-cli --version "^2" --locked
+      - run: cargo build --release -p nibble-hook
+      - run: cargo tauri build
+        working-directory: app
+      - run: |
+          $installer = Get-ChildItem target/release/bundle/nsis/*-setup.exe | Select-Object -First 1
+          $version = "${{ github.ref_name }}".TrimStart("v")
+          Copy-Item $installer.FullName "Nibble-Setup-$version.exe"
       - uses: softprops/action-gh-release@v3
         with:
           draft: true
-          files: dist/Nibble-Setup-*.exe
+          files: Nibble-Setup-*.exe

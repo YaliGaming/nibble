@@ -1,12 +1,13 @@
 # Third-party software
 
-Nibble's own code is under the MIT License (see `LICENSE`) and has no runtime
-dependencies from npm. The installed app does include two other projects:
+Nibble's own code is under the MIT License (see `LICENSE`). It is written in
+Rust and built from the crates listed in `Cargo.lock`, each under its own
+open-source license (mostly MIT and Apache-2.0). The installed app also uses:
 
-| What | Used for | License | Where its license text is |
-| --- | --- | --- | --- |
-| [Electron](https://www.electronjs.org/) (with Chromium) | the app itself | MIT; Chromium's components under their own licenses | `LICENSE.electron.txt` and `LICENSES.chromium.html`, next to `Nibble.exe` |
-| [Node.js](https://nodejs.org/) | running the Claude Code hook and the `/pet` command | MIT; bundled components under their own licenses | `resources/node/LICENSE` |
+| What | Used for | License |
+| --- | --- | --- |
+| [Tauri](https://tauri.app/) and [wry](https://github.com/tauri-apps/wry) | windows, tray icon, global shortcut, dialogs | MIT or Apache-2.0 |
+| Microsoft Edge WebView2 | drawing the pet and the panel; it is part of Windows 10 and 11 | Microsoft's own license |
 
 Nibble is a community project. It is not made by, endorsed by, or affiliated
 with Anthropic. "Claude" and "Claude Code" are trademarks of Anthropic, used

@@ -36,18 +36,18 @@
 
 קובץ ההתקנה לא חתום דיגיטלית, ולכן בפעם הראשונה Windows SmartScreen מציג "Windows protected your PC". בוחרים **More info** ואז **Run anyway**. מי שמעדיף שלא, יכול להריץ מהקוד (למטה); זה אותו קוד.
 
-לא צריך להתקין שום דבר נוסף. האפליקציה מביאה עותק משלה של Node.js בשביל הסקריפטים הקטנים ש־Claude Code מריץ.
+לא צריך להתקין שום דבר נוסף. האפליקציה היא תוכנה קטנה אחת שנכתבה ב־Rust, והעזר הקטן ש־Claude Code מריץ מגיע איתה.
 
 ### הרצה מהקוד
 
-צריך [Node.js](https://nodejs.org/) 22 ומעלה.
+צריך [Rust](https://rustup.rs/) (יציב) וכלי הבנייה של C++ מ־Visual Studio. WebView2, שבו האפליקציה מציירת, כבר כלול ב־Windows 10 ו־11.
 
 ```bash
-npm install
+cargo build --release
 ```
 
 ```bash
-npm start
+cargo run --release -p nibble
 ```
 
 ב־Windows אפשר גם ללחוץ פעמיים על `Nibble.cmd`.
@@ -108,7 +108,7 @@ Ember,‏ Mochi,‏ Byte ו־Boo מובנות, ו"מיני" מציג רק את �
 **חיבור** מוסיף [hooks](https://code.claude.com/docs/en/hooks) לקובץ `~/.claude/settings.json`. איתם החיה יודעת גם מה Claude עושה, מציגה את התשובה שלו, מזהה כישלונות, ויכולה להציע אישור ודחייה.
 
 - לפני כל שינוי הקובץ מועתק אל `~/.nibble-pet/backups`.
-- נוספות רק רשומות שמריצות את שני הסקריפטים של Nibble. כל השאר בקובץ נשאר כמו שהיה.
+- נוספות רק רשומות שמריצות את תוכנת העזר של Nibble. כל השאר בקובץ נשאר כמו שהיה.
 - **ניתוק** מסיר בדיוק את הרשומות האלה, וגם הסרת האפליקציה עושה את זה.
 - נוספות שתי פקודות ל־`~/.claude/skills`:‏ `/pet` ו־`/hatch-pet`.
 
@@ -135,7 +135,7 @@ Ember,‏ Mochi,‏ Byte ו־Boo מובנות, ו"מיני" מציג רק את �
 | `~/.nibble-pet/events/` | יומני הסשנים שתוארו למעלה. |
 | `~/.nibble-pet/pets/` | חיות שיצרת או ייבאת. |
 | `~/.nibble-pet/backups/` | עותקים של `settings.json` מלפני כל שינוי. |
-| `~/.nibble-pet/hook.js`,‏ `pet.js` | שני הסקריפטים ש־Claude Code מריץ. |
+| `~/.nibble-pet/nibble-hook.exe` | תוכנת העזר ש־Claude Code מריץ בשביל ה־hooks ו־`/pet`. |
 | `~/.claude/skills/pet`,‏ `hatch-pet` | שתי הפקודות. |
 
 ## הסרה
@@ -155,15 +155,17 @@ Ember,‏ Mochi,‏ Byte ו־Boo מובנות, ו"מיני" מציג רק את �
 ## בניית קובץ ההתקנה
 
 ```bash
-npm run build
+cargo install tauri-cli --version "^2" --locked
+cargo build --release -p nibble-hook
+cd app && cargo tauri build
 ```
 
-בונה את קובץ ההתקנה אל `dist/`. אם `makensis` מתלונן ש־"could not open file", הנתיב של תיקיית הפרויקט ארוך מדי בשבילו; בונים מנתיב קצר יותר.
+בונה את קובץ ההתקנה אל `target/release/bundle/nsis/`. אם `makensis` מתלונן ש־"could not open file", הנתיב של תיקיית הפרויקט ארוך מדי בשבילו; בונים מנתיב קצר יותר.
 
 איך מוסיפים חיה או תרגום: [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## רישיון
 
-[MIT](LICENSE). האפליקציה המותקנת כוללת גם את Electron ואת Node.js; ראו [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+[MIT](LICENSE). האפליקציה המותקנת בנויה ב־Rust וב־Tauri; ראו [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 </div>
