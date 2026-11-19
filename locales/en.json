@@ -46,7 +46,6 @@
   "connect.detail": "This adds hooks to {file}, and the /pet and /hatch-pet commands. A backup is saved first, and Disconnect removes them.",
   "connect.disconnect": "Disconnect",
   "connect.error": "Could not update settings: {e}",
-  "connect.noNode": "Node.js is needed for the connection and was not found.",
   "connect.notConnected": "Not connected",
   "connect.partial": "Partly connected. Press Connect to repair.",
   "connect.title": "Connect to Claude Code",

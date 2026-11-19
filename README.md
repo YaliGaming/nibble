@@ -34,21 +34,19 @@
 
 The installer is not code-signed, so Windows SmartScreen shows "Windows protected your PC" the first time. Choose **More info**, then **Run anyway**. If you would rather not, run it from source instead (below); it is the same code.
 
-Nothing else needs installing. The app brings its own copy of Node.js for the small scripts that Claude Code runs.
+Nothing else needs installing. The app is a single small program written in Rust; the small helper that Claude Code runs comes with it.
 
 ### From source
 
-Needs [Node.js](https://nodejs.org/) 22 or later.
+Needs [Rust](https://rustup.rs/) (stable) and the Visual Studio C++ build tools. Windows 10 and 11 already include the WebView2 runtime the app draws with.
 
 ```bash
-npm install
+cargo build --release
 ```
 
 ```bash
-npm start
+cargo run --release -p nibble
 ```
-
-On Windows you can also double-click `Nibble.cmd`.
 
 ## Using it
 
@@ -106,7 +104,7 @@ Even without connecting, the pet sees whether a session is busy, waiting or fini
 **Connect** adds [hooks](https://code.claude.com/docs/en/hooks) to `~/.claude/settings.json`. With them the pet also knows what Claude is doing, can show its answer, notices failures, and can offer Allow and Deny.
 
 - The file is copied to `~/.nibble-pet/backups` before every change.
-- Only entries that run Nibble's own two scripts are added. Everything else in the file is left as it was.
+- Only entries that run Nibble's own helper program are added. Everything else in the file is left as it was.
 - **Disconnect** removes exactly those entries, and uninstalling the app does the same.
 - Two slash commands are added to `~/.claude/skills`: `/pet` and `/hatch-pet`.
 
@@ -137,7 +135,7 @@ Where things live:
 | `~/.nibble-pet/events/` | The session logs described above. |
 | `~/.nibble-pet/pets/` | Pets you hatched or imported. |
 | `~/.nibble-pet/backups/` | Copies of `settings.json` from before each change. |
-| `~/.nibble-pet/hook.js`, `pet.js` | The two scripts Claude Code runs. |
+| `~/.nibble-pet/nibble-hook.exe` | The helper program Claude Code runs for the hooks and for `/pet`. |
 | `~/.claude/skills/pet`, `hatch-pet` | The two slash commands. |
 
 ## Uninstall
@@ -148,7 +146,7 @@ Running from source: press Disconnect in the settings, turn the pet off, and del
 
 ## Limitations
 
-- **Windows only for now.** The code avoids Windows-only APIs where it can, but the window behaviour, starting the app and the installer have only been built and tested on Windows.
+- **Windows only for now.** The code uses Windows APIs (a named pipe for talking to the hook, the registry, transparent windows), and it has only been built and tested on Windows.
 - **The session list is not a public interface.** Claude Code does not document `~/.claude/sessions`, so a future version may change it. Nibble treats everything in it as optional, and with the hooks connected it does not depend on it for the essentials. Hooks are a documented, stable interface.
 - **The installer is not signed**, which is what the SmartScreen warning is about.
 - **Not for locked-down machines.** If your organisation manages Claude Code's settings and does not allow user hooks, Connect has no effect.
@@ -157,13 +155,21 @@ Running from source: press Disconnect in the settings, turn the pet off, and del
 ## Building the installer
 
 ```bash
-npm run build
+cargo install tauri-cli --version "^2" --locked
 ```
 
-Builds the installer into `dist/`. If `makensis` complains that it "could not open file", the project folder's path is too long for it; build from a shorter path.
+```bash
+cargo build --release -p nibble-hook
+cd app
+cargo tauri build
+```
+
+Builds the installer into `target/release/bundle/nsis/`. If `makensis` complains that it "could not open file", the project folder's path is too long for it; build from a shorter path.
+
+The file is named `Nibble_x.y.z_x64-setup.exe`. To publish it, rename it to `Nibble-Setup-x.y.z.exe` and attach it to a GitHub release by hand; there is no automatic build.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add a pet or a translation.
 
 ## License
 
-[MIT](LICENSE). The installed app also contains Electron and Node.js; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+[MIT](LICENSE). The installed app is built with Rust and Tauri; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

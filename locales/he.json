@@ -46,7 +46,6 @@
   "connect.detail": "החיבור מוסיף hooks לקובץ {file}, ואת הפקודות ⁦/pet⁩ ו־⁦/hatch-pet⁩. נשמר גיבוי לפני השינוי, ו״ניתוק״ מסיר אותם.",
   "connect.disconnect": "ניתוק",
   "connect.error": "עדכון ההגדרות נכשל: {e}",
-  "connect.noNode": "החיבור דורש Node.js, והוא לא נמצא במחשב.",
   "connect.notConnected": "לא מחובר",
   "connect.partial": "מחובר חלקית. לחצו על ״חיבור״ לתיקון.",
   "connect.title": "חיבור ל־Claude Code",

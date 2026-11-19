@@ -1,0 +1,12 @@
+[package]
+name = "nibble-hook"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+nibble-core = { path = "../core" }
+serde_json = "1"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_UI_Shell", "Win32_UI_WindowsAndMessaging", "Win32_Foundation"] }
