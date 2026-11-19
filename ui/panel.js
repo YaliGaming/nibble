@@ -148,7 +148,7 @@ function renderHome() {
   setText($('connect-body'), conn.partial ? t('connect.partial') : t('connect.body'));
   setText($('connect-detail'), t('connect.detail', { file: PetI18n.isolateLtr(conn.settingsFile) }));
   setText($('connect-btn'), t('connect.button'));
-  setText($('connect-error'), connectError || (conn.node ? '' : t('connect.noNode')));
+  setText($('connect-error'), connectError);
 
   const items = state.sessions.map((s) => `
     <button class="item s-${s.status}" data-sid="${esc(s.id)}" type="button">
@@ -311,7 +311,7 @@ function renderSettings() {
   $('conn-btn').className = conn.connected ? '' : 'primary';
   $('conn-detail').hidden = conn.connected;
   setText($('conn-detail'), conn.connected ? '' : t('connect.detail', { file: PetI18n.isolateLtr(conn.settingsFile) }));
-  const error = connectError || (conn.node ? '' : t('connect.noNode'));
+  const error = connectError;
   $('conn-error').hidden = !error;
   setText($('conn-error'), error);
 
