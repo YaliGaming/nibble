@@ -86,14 +86,14 @@ Without a folder, a Quick Chat runs in an empty one (`~/.nibble-pet/quick-chat`)
 
 After connecting, type `/pet` in any Claude Code session. If the pet is on, it turns off: the app closes and stays closed. If it is off, it turns on.
 
-A Claude Code hook answers the command before it reaches the model, which is why it is free, and also why the reply appears under the heading "UserPromptExpansion operation blocked by hook". That is not an error; it is how Claude Code shows a command that a hook handled.
+A Claude Code hook answers the command before it reaches the model, which is why it is free, and also why the reply appears under the heading "UserPromptExpansion operation blocked by hook". It is not an error: Claude Code shows every command that a hook handled this way.
 
 ### Pets
 
 Ember, Mochi, Byte and Boo are built in, and "Mini" shows only the buttons.
 
-- **Hatch one:** in the settings, describe it and press Hatch. Claude draws it in pixels. `/hatch-pet a purple dragon` in a Claude Code session does the same.
-- **Share one:** a pet is a single small JSON file. Export this pet… saves it, Import pet… loads one.
+- Hatch one: in the settings, describe it and press Hatch. Claude draws it in pixels. `/hatch-pet a purple dragon` in a Claude Code session does the same.
+- Share one: a pet is a single small JSON file. Export this pet… saves it, Import pet… loads one.
 
 The pet respects the Windows "reduce motion" setting: each state becomes one still picture.
 
@@ -146,10 +146,10 @@ Running from source: press Disconnect in the settings, turn the pet off, and del
 
 ## Limitations
 
-- **Windows only for now.** The code uses Windows APIs (a named pipe for talking to the hook, the registry, transparent windows), and it has only been built and tested on Windows.
-- **The session list is not a public interface.** Claude Code does not document `~/.claude/sessions`, so a future version may change it. Nibble treats everything in it as optional, and with the hooks connected it does not depend on it for the essentials. Hooks are a documented, stable interface.
-- **The installer is not signed**, which is what the SmartScreen warning is about.
-- **Not for locked-down machines.** If your organisation manages Claude Code's settings and does not allow user hooks, Connect has no effect.
+- Windows only for now. The code uses Windows APIs (a named pipe for talking to the hook, the registry, transparent windows), and it has only been built and tested on Windows.
+- The session list is not a public interface. Claude Code does not document `~/.claude/sessions`, so a future version may change it. Nibble treats everything in it as optional, and with the hooks connected it does not depend on it for the essentials. Hooks are a documented, stable interface.
+- The installer is not signed, which is what the SmartScreen warning is about.
+- Not for locked-down machines. If your organisation manages Claude Code's settings and does not allow user hooks, Connect has no effect.
 - Sessions that run on another machine (Claude Code on the web, remote sessions) are not shown.
 
 ## Building the installer
